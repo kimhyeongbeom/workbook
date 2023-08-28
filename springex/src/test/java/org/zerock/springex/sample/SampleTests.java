@@ -1,5 +1,9 @@
 package org.zerock.springex.sample;
 
+import java.sql.Connection;
+
+import javax.sql.DataSource;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,9 +20,20 @@ public class SampleTests {
 	@Autowired
 	private SampleService sampleService;
 	
+	@Autowired
+	private DataSource dataSource;
+	
 	@Test
 	public void testService1() {
 		log.info(sampleService);
 		Assertions.assertNotNull(sampleService);
+	}
+	
+	@Test
+	public void testConnection() throws Exception {
+		Connection connection = dataSource.getConnection();
+		log.info(connection);
+		Assertions.assertNotNull(connection);
+		connection.close();
 	}
 }
