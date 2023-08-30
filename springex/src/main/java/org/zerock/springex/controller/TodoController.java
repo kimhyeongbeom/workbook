@@ -8,24 +8,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.springex.dto.TodoDTO;
+import org.zerock.springex.service.TodoService;
 
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 
 @Controller
 @RequestMapping("/todo")
 @Log4j2
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class TodoController {
 
-//    private final TodoService todoService;
+    private final TodoService todoService;
 
     @RequestMapping("/list")
     public void list3(Model model){
 
         log.info("todo list.......");
 
-        //model.addAttribute("dtoList", todoService.getAll());
+        model.addAttribute("dtoList", todoService.getAll());
     }
 
     @GetMapping("/register")
@@ -35,21 +38,21 @@ public class TodoController {
     
 
     @PostMapping("/register")
-    public void registerPost(TodoDTO todoDTO) {
+    public String registerPost(@Valid TodoDTO todoDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         log.info("POST todo register.......");
 
-//        if(bindingResult.hasErrors()) {
-//            log.info("has errors.......");
-//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
-//            return "redirect:/todo/register";
-//        }
+        if(bindingResult.hasErrors()) {
+            log.info("has errors.......");
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+            return "redirect:/todo/register";
+        }
 
         log.info(todoDTO);
 
-//        todoService.register(todoDTO);
-//
-//        return "redirect:/todo/list";
+        todoService.register(todoDTO);
+
+        return "redirect:/todo/list";
     }
 
 

@@ -2,6 +2,8 @@ package org.zerock.springex.dto;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,15 +19,15 @@ public class TodoDTO {
 
     private Long tno;
 
-//    @NotEmpty
+    @NotEmpty
     private String title;
 
-//    @Future
+    @Future
     private LocalDate dueDate;
 
     private boolean finished;
 
- //   @NotEmpty
+    @NotEmpty
     private String writer;
 
 }
