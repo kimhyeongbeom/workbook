@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>		
+	<typeHandlers>
+	
+		<typeHandler javaType="String" jdbcType="VARCHAR" handler="common.util.StringTypeHandlerCallbackMybatis"/>
+		<typeHandler javaType="String" jdbcType="CHAR" handler="common.util.StringTypeHandlerCallbackMybatis"/>
+		<typeHandler javaType="String" jdbcType="CLOB" handler="common.util.StringTypeHandlerCallbackMybatis"/>
+		<typeHandler javaType="String" jdbcType="BLOB" handler="common.util.StringTypeHandlerCallbackMybatis"/>
+		<typeHandler javaType="String" jdbcType="LONGVARCHAR"  handler="common.util.StringTypeHandlerCallbackMybatis"/>
+		<typeHandler javaType="String" handler="common.util.StringTypeHandlerCallbackMybatis"/>	
+		
+		<typeHandler javaType="java.time.LocalDate" jdbcType="DATE" handler="common.util.DateTypeHandler"/>
+		<typeHandler javaType="java.time.LocalDate" jdbcType="TIMESTAMP" handler="common.util.DateTypeHandler"/>
+	</typeHandlers>
+</configuration>

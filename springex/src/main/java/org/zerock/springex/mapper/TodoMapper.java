@@ -1,6 +1,7 @@
 
 package org.zerock.springex.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.zerock.springex.domain.TodoVO;
@@ -11,7 +12,9 @@ public interface TodoMapper {
 
     void insert(TodoVO todoVO);
 
-    List<TodoVO> selectAll();
+    List<HashMap> selectAll();
+    
+    List<TodoVO> selectAll2();
 
     /*
     TodoVO selectOne(Long tno);

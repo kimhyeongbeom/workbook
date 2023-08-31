@@ -1,5 +1,9 @@
 package org.zerock.springex.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,7 +41,28 @@ public class TodoServiceImpl implements TodoService{
     @Override
     public List<TodoDTO> getAll() {
 
-        List<TodoDTO> dtoList = todoMapper.selectAll().stream()
+        List<HashMap> resultList = todoMapper.selectAll();
+        List<TodoDTO> dtoList = new ArrayList<TodoDTO>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+        
+        for(HashMap item : resultList) {
+        	System.out.println("item : " + item);
+        	TodoDTO dd = new TodoDTO();
+        	dd.setTno(Long.parseLong((String)item.get("TNO")));
+        	dd.setTitle((String)item.get("TITLE"));
+        	dd.setWriter((String)item.get("WRITER"));
+        	dd.setFinished(!((String)item.get("FINISHED")).equals("0"));
+        	dd.setDueDate(LocalDate.parse((String)item.get("DUEDATE"), formatter));
+        	dtoList.add(dd);
+        }
+        
+        return dtoList;
+    }
+
+    @Override
+    public List<TodoDTO> getAll2() {
+
+        List<TodoDTO> dtoList = todoMapper.selectAll2().stream()
                 .map(vo -> modelMapper.map(vo, TodoDTO.class))
                 .collect(Collectors.toList());
 
