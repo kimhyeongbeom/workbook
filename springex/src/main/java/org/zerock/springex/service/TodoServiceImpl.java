@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 import org.zerock.springex.domain.TodoVO;
 import org.zerock.springex.dto.TodoDTO;
@@ -24,6 +25,8 @@ public class TodoServiceImpl implements TodoService{
     private final TodoMapper todoMapper;
 
     private final ModelMapper modelMapper;
+    
+	private final SqlSessionTemplate SqlSession;
 
     @Override
     public void register(TodoDTO todoDTO) {
@@ -62,11 +65,15 @@ public class TodoServiceImpl implements TodoService{
     @Override
     public List<TodoDTO> getAll2() {
 
+    	List<TodoDTO> dtoList2 = SqlSession.selectList("org.zerock.springex.mapper.TodoMapper.selectAll2").stream()
+                 .map(vo -> modelMapper.map(vo, TodoDTO.class))
+                 .collect(Collectors.toList());
+    	 
         List<TodoDTO> dtoList = todoMapper.selectAll2().stream()
                 .map(vo -> modelMapper.map(vo, TodoDTO.class))
                 .collect(Collectors.toList());
 
-        return dtoList;
+        return dtoList2;
     }
 
 //    @Override

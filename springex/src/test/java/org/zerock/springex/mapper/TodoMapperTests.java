@@ -40,15 +40,15 @@ public class TodoMapperTests {
         todoMapper.insert(todoVO);
 
     }
-
-    @Test
-    public void testSelectAll() {
-
-        List<TodoVO> voList = todoMapper.selectAll();
-
-        voList.forEach(vo ->  log.info(vo));
-
-    }
+//
+//    @Test
+//    public void testSelectAll() {
+//
+//        List<TodoVO> voList = todoMapper.selectAll();
+//
+//        voList.forEach(vo ->  log.info(vo));
+//
+//    }
 //
 //    @Test
 //    public void testSelectOne() {

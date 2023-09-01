@@ -25,10 +25,22 @@
         <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
 		<property name="configLocation" value="/WEB-INF/mybatis-config.xml" />
     </bean>
+    
+    <!-- Mapper interface가 저정된 위치지정 -->
+    <!-- Service에서 mapper함수 이용 namespace는 mapper interface와 잘 맞춰주어야 한다. -->
     <mybatis:scan base-package="org.zerock.springex.mapper"></mybatis:scan>
 
     <context:component-scan base-package="org.zerock.springex"/>
     
+    <!-- Mapper interface를 사용하지 않고 단순하메 아래처럼 Service에서 사용하려면 아래를 선언하고 Service에서 사용한다. -->
+    <!-- Service에서 사용할때 
+    	 private final SqlSessionTemplate SqlSession; 
+    	 ...
+    	 list = SqlSession.selectList("org.zerock.springex.mapper.TodoMapper.selectAll2");
+    -->
+    <bean id="SqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	 	<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
 <!--
     <context:component-scan base-package="org.zerock.springex.config"/>
     <context:component-scan base-package="org.zerock.springex.service"/>
