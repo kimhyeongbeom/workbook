@@ -1,16 +1,21 @@
 package org.zerock.springex.domain;
 
-import lombok.*;
-
 import java.time.LocalDate;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class TodoVO {
-
     private Long tno;
 
     private String title;
@@ -19,5 +24,5 @@ public class TodoVO {
 
     private String writer;
 
-    private boolean finished;
+    private Boolean finished;
 }

@@ -9,6 +9,7 @@ public interface TodoService {
     void register(TodoDTO todoDTO);
 
     List<TodoDTO> getAll();
+    List<TodoDTO> getAll2();
 //
 //    PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO);
 //

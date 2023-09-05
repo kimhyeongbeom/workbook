@@ -40,12 +40,16 @@
         insert into tbl_todo (title, dueDate, writer) values  ( #{title}, #{dueDate}, #{writer})
     </insert>
 
-    <select id="selectAll" resultType="org.zerock.springex.domain.TodoVO">
-        select * from tbl_todo order by tno desc
+    <select id="selectAll" resultType="java.util.HashMap">
+        select tno, title, writer, dueDate, finished from tbl_todo order by tno desc
+    </select>
+
+    <select id="selectAll2" resultType="org.zerock.springex.domain.TodoVO">
+        select tno, title, writer, dueDate, finished from tbl_todo order by tno desc
     </select>
 
     <select id="selectOne" resultType="org.zerock.springex.domain.TodoVO">
-        select * from tbl_todo where tno  = #{tno}
+        select tno, title, writer, dueDate, finished from tbl_todo where tno  = #{tno}
     </select>
 
 

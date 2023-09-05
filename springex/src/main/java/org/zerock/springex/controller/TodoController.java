@@ -28,7 +28,7 @@ public class TodoController {
 
         log.info("todo list.......");
 
-        model.addAttribute("dtoList", todoService.getAll());
+        model.addAttribute("dtoList", todoService.getAll2());
     }
 
     @GetMapping("/register")
