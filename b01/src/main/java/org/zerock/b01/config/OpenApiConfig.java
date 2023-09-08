@@ -12,8 +12,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
 							name = "leopard2",
 							email = "test@test.com"
 							),
-					description = "OpenApi Documentation of member Api",
-					title = "Member Api",
+					description = "OpenApi Documentation of Boot b01 Api",
+					title = "Boot b01 Project Swagger",
 					version = "1.0",
 					license = @License ( 
 							name = "leopard2 license",
